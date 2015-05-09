@@ -60,7 +60,7 @@ module PaperTrail
 
       # Tells PaperTrail who is responsible for any changes that occur.
       def set_paper_trail_whodunnit
-        ::PaperTrail.whodunnit = user_for_paper_trail if ::PaperTrail.enabled_for_controller?
+        ::PaperTrail.whodunnit = user_for_paper_trail.try(:email) if ::PaperTrail.enabled_for_controller?
       end
 
       # Tells PaperTrail any information from the controller you want
